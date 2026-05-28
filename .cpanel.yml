@@ -1,5 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/mkdir -p $HOME/public_html/wp-content/themes/kaplan
-    - /bin/cp -R wp-content/themes/kaplan/. $HOME/public_html/wp-content/themes/kaplan/
+    - /usr/bin/php bin/deploy.php wp-content/themes/kaplan $HOME/public_html/wp-content/themes/kaplan
