@@ -16,7 +16,7 @@ içerir. WordPress core, default tema'lar, 3rd-party plugin'ler, `wp-content/upl
 | Bileşen | Versiyon |
 |---|---|
 | WordPress | **7.0** (`wp-includes/version.php`'deki `$wp_version`) |
-| PHP | **7.4+** (lokal dev'de PHP 8.0 ile test edildi) |
+| PHP | **8.1** (prod target) — lokal dev WAMP'ta 8.0 ile çalışıyor; WP'nin teknik alt sınırı 7.4 ama yeni kurulumlar 8.1 ile yapılmalı |
 | MySQL / MariaDB | **5.5.5+** |
 | Web server | Apache (WAMP / cPanel) — `.htaccess` ile pretty permalinks |
 
