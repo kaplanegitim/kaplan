@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - /bin/mkdir -p $HOME/public_html/wp-content/themes/kaplan
+    - /usr/bin/rsync -av --delete wp-content/themes/kaplan/ $HOME/public_html/wp-content/themes/kaplan/
