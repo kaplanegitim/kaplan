@@ -1,7 +1,16 @@
 # Kaplan — Production Deployment Runbook
 
+> ## ✅ DEPLOY TAMAMLANDI — Mayıs 2026
+>
+> Site **canlıda yayında**: `https://www.kaplanegitim.com/` · PHP 8.1 · WordPress 7.0 · özel kaplan teması.
+> Migrasyon **All-in-One WP Migration (108 MB .wpress)** ile yapıldı; URL/path otomatik dönüştürüldü; tüm sayfa, form ve çift dil çalışıyor.
+>
+> Bu dosya artık **arşiv runbook** — gelecekteki benzer migrasyonlar için referans. Aşağıdaki adımlar uygulandı; üstü çizili olmasa da hepsi tamam. Güncel "ne kaldı" listesi `RAPOR.md` §7'de + `SEO-SPAM-CLEANUP.md` (Google'da hâlâ duran hack-artığı URL'ler için 410 + Search Console Removals).
+>
+> Lansman sonrası senkron kuralı: **kod → File Manager dosya yükle; içerik → canlıdan AIOWPM import.** İkisini karıştırma.
+
 Lokal: `http://localhost/kaplan/`  →  Production: `https://www.kaplanegitim.com/`
-Sunucu: cPanel + **LiteSpeed** (LSWS) + **Cloudflare** önde · PHP 7.4 (→ 8.1/8.2'ye yükselt)
+Sunucu: cPanel + **LiteSpeed** (LSWS) + **Cloudflare** önde · PHP 8.1 (yükseltildi)
 
 ---
 
