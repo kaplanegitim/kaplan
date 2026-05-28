@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1235 650">
+  <rect width="1235" height="650" fill="#fff"/>
+  <g fill="#b22234">
+    <rect width="1235" height="50" y="0"/>
+    <rect width="1235" height="50" y="100"/>
+    <rect width="1235" height="50" y="200"/>
+    <rect width="1235" height="50" y="300"/>
+    <rect width="1235" height="50" y="400"/>
+    <rect width="1235" height="50" y="500"/>
+    <rect width="1235" height="50" y="600"/>
+  </g>
+  <rect width="494" height="350" fill="#3c3b6e"/>
+  <g fill="#fff">
+    <g id="r">
+      <circle cx="49" cy="44" r="14"/><circle cx="143" cy="44" r="14"/><circle cx="237" cy="44" r="14"/><circle cx="331" cy="44" r="14"/><circle cx="425" cy="44" r="14"/>
+    </g>
+    <g>
+      <circle cx="96" cy="88" r="14"/><circle cx="190" cy="88" r="14"/><circle cx="284" cy="88" r="14"/><circle cx="378" cy="88" r="14"/>
+    </g>
+    <use href="#r" y="88"/>
+    <g>
+      <circle cx="96" cy="175" r="14"/><circle cx="190" cy="175" r="14"/><circle cx="284" cy="175" r="14"/><circle cx="378" cy="175" r="14"/>
+    </g>
+    <use href="#r" y="175"/>
+    <g>
+      <circle cx="96" cy="262" r="14"/><circle cx="190" cy="262" r="14"/><circle cx="284" cy="262" r="14"/><circle cx="378" cy="262" r="14"/>
+    </g>
+    <use href="#r" y="262"/>
+  </g>
+</svg>

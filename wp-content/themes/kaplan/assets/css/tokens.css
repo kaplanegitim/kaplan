@@ -1,0 +1,53 @@
+/* =========================================================
+   Kaplan Theme — Design Tokens
+   Single source of truth for the frontend.
+   Mirrored in theme.json for Gutenberg editor.
+   ========================================================= */
+
+:root {
+  /* ---------- Colors: Brand ---------- */
+  --c-primary:      #5AC8FB;   /* Brand cyan */
+  --c-primary-600:  #2BB4F2;   /* Hover */
+  --c-primary-700:  #129BD8;   /* Pressed */
+  --c-primary-50:   #EAF7FE;   /* Soft surface (pill, chip bg) */
+
+  /* ---------- Colors: Text ---------- */
+  --c-ink:          #0F1B2D;   /* Body text, headings */
+  --c-ink-soft:     #2A3A52;   /* Secondary text */
+  --c-muted:        #6B7A90;   /* Tertiary / caption */
+
+  /* ---------- Colors: Surface ---------- */
+  --c-line:         #E6ECF3;   /* Borders, separators */
+  --c-bg:           #FFFFFF;   /* Page bg */
+  --c-bg-soft:      #F6F9FC;   /* section--soft */
+  --c-bg-dark:      #0F1B2D;   /* Topbar, stats, dark sections */
+
+  /* ---------- Radius ---------- */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  22px;
+  --r-xl:  28px;
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm: 0 1px 2px rgba(15,27,45,.06), 0 1px 3px rgba(15,27,45,.04);
+  --shadow-md: 0 8px 24px rgba(15,27,45,.08);
+  --shadow-lg: 0 20px 50px rgba(15,27,45,.14);
+
+  /* ---------- Transition ---------- */
+  --t-fast: .18s ease;
+  --t-base: .28s cubic-bezier(.2,.7,.2,1);
+
+  /* ---------- Typography ---------- */
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Manrope', 'Inter', sans-serif;
+
+  --fs-h1: clamp(2rem, 4.4vw, 3.6rem);
+  --fs-h2: clamp(1.6rem, 2.6vw, 2.4rem);
+  --fs-h3: 1.25rem;
+  --fs-h4: 1.05rem;
+  --lh-body: 1.6;
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-pad: 4%;          /* used as: width: min(var(--container-max), calc(100% - 2 * var(--container-pad))); */
+}

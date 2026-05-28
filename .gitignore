@@ -1,0 +1,74 @@
+# ---- Sensitive / environment ----
+wp-config.php
+.env
+.env.*
+*.env
+
+# ---- Logs ----
+*.log
+debug.log
+error_log
+wp-content/debug.log
+
+# ---- WordPress core (installed/updated outside repo) ----
+/wp-admin/
+/wp-includes/
+/index.php
+/wp-activate.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+/readme.html
+/license.txt
+
+# ---- wp-content: ignore by default, whitelist what's ours ----
+wp-content/index.php
+wp-content/languages/
+wp-content/mu-plugins/
+wp-content/plugins/
+wp-content/themes/*
+!wp-content/themes/kaplan/
+# (to add a new custom theme: append `!wp-content/themes/<name>/`)
+# (to add a custom plugin: replace plugins/ line with `wp-content/plugins/*` then `!wp-content/plugins/<name>/`)
+
+# ---- WordPress runtime / generated ----
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/ai1wm-backups/
+wp-content/litespeed/
+wp-content/wflogs/
+wp-content/et-cache/
+wp-content/blogs.dir/
+
+# ---- Dev tooling ----
+node_modules/
+vendor/
+.sass-cache/
+*.sql
+*.sql.gz
+*.zip
+*.tar
+*.tar.gz
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*.bak
+*~
+.idea/
+.vscode/

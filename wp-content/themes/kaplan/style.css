@@ -1,0 +1,74 @@
+/*
+Theme Name:        Kaplan
+Theme URI:         https://kaplanegitim.com/
+Author:            Kaplan Eğitim
+Author URI:        https://kaplanegitim.com/
+Description:       Kaplan Eğitim ve Danışmanlık için özel WordPress teması. Inter + Manrope tipografi, modern cyan paleti.
+Version:           0.4.0
+Requires at least: 6.0
+Requires PHP:      7.4
+License:           Proprietary
+Text Domain:       kaplan
+Tags:              custom, business, education, modern
+*/
+
+/* Design tokens live in assets/css/tokens.css (enqueued separately). */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a   { color: inherit; text-decoration: none; transition: color var(--t-fast); }
+ul  { list-style: none; padding: 0; margin: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--c-ink);
+  letter-spacing: -.01em;
+  margin: 0 0 .4em;
+  line-height: 1.2;
+}
+h1 { font-size: var(--fs-h1); font-weight: 800; }
+h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3 { font-size: var(--fs-h3); font-weight: 700; }
+h4 { font-size: var(--fs-h4); font-weight: 700; }
+
+p  { margin: 0 0 1em; color: var(--c-ink-soft); }
+
+/* Accessibility: visually hidden, screen reader only */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+  background: var(--c-primary-700);
+  color: #fff;
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  width: auto;
+  padding: 1em;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100000;
+  text-decoration: none;
+}
