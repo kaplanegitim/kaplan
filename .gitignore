@@ -1,3 +1,7 @@
+# ---- Scratch / one-shot helpers (never commit) ----
+_*.php
+_scratch/
+
 # ---- Sensitive / environment ----
 wp-config.php
 .env
