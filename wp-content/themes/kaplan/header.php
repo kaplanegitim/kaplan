@@ -9,6 +9,12 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <?php
+    // Favicon fallback — Site Icon set edilmediyse tema varsayılanını ver.
+    if ( ! has_site_icon() ) {
+        printf('<link rel="icon" href="%s" />' . "\n", esc_url(KAPLAN_URI . '/assets/img/logo_k.png'));
+    }
+    ?>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

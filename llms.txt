@@ -1,0 +1,21 @@
+# Kaplan Eğitim ve Danışmanlık
+
+> Şirketlere kurumsal eğitim, yönetim danışmanlığı ve iş zekası yazılım çözümleriyle "Büyük Resmi Görebilmek" yolculuğunda destek veren danışmanlık firması.
+
+## Hizmetler
+- [Eğitimler](https://www.kaplanegitim.com/egitimler/): 18 kurumsal eğitim programı; veri okuryazarlığı, liderlik, satış, finans, RPA ve iş zekası odaklı.
+- [Danışmanlık ve Projeler](https://www.kaplanegitim.com/danismanlik-ve-projelerimiz/): Yönetim ve süreç danışmanlığı; 8 referans projeyle Türkiye'nin önde gelen kurumlarına hizmet.
+- [İş Zekası Yazılımları](https://www.kaplanegitim.com/is-zekasi-yazilimlari/): RPA, dashboard ve veri görselleştirme; Power BI, Tableau ve özel uygulama geliştirme.
+- [İnfografik ve Sunum](https://www.kaplanegitim.com/infografik-ve-sunum/): Veri görselleştirme ve kurumsal sunum tasarımı.
+
+## Kurumsal
+- [Hakkımızda](https://www.kaplanegitim.com/hakkimizda/): Ekip, vizyon ve kurumsal kimlik.
+- [Eğitim Talep Formu](https://www.kaplanegitim.com/egitim-talep-formu/): Kurumsal eğitim ve danışmanlık başvuruları.
+- [İletişim](https://www.kaplanegitim.com/iletisim/): Ulaşım, telefon, e-posta.
+
+## Kardeş Site (Bireysel)
+- [Bireysel](https://bireysel.kaplanegitim.com/): Gelişim kitapları, planlama setleri ve online eğitimlerle bireysel gelişim platformu.
+
+## İletişim
+- Telefon: +90 530 967 23 66
+- E-posta: bilgi@kaplanegitim.com

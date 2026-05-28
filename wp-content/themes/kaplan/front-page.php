@@ -27,6 +27,24 @@ $slides_q = kpl_query_with_lang_fallback([
 ]);
 if ($slides_q->have_posts()) :
     $slide_count = $slides_q->post_count;
+
+    // SEO: inline style= attribute'larından kaçınmak için arka planları
+    // önceden tek bir <style> bloğuna topla; her slayt benzersiz bir sınıf alır.
+    $hero_bgs = [];
+    $pre_idx  = 0;
+    while ($slides_q->have_posts()) : $slides_q->the_post(); $pre_idx++;
+        $thumb = get_the_post_thumbnail_url(get_the_ID(), 'full');
+        if ($thumb) $hero_bgs[$pre_idx] = esc_url($thumb);
+    endwhile;
+    $slides_q->rewind_posts();
+
+    if ($hero_bgs) {
+        echo "<style>";
+        foreach ($hero_bgs as $i => $u) {
+            echo ".hero__slide--bg{$i}{background-image:url('{$u}');}";
+        }
+        echo "</style>\n";
+    }
 ?>
 <section class="hero">
     <div class="hero__slides">
@@ -41,25 +59,25 @@ if ($slides_q->have_posts()) :
             $active     = $idx === 1 ? ' is-active' : '';
             // Görseli olmayan slide → marka gradient placeholder (her biri farklı varyant).
             if ($thumb) {
-                $slide_cls   = '';
-                $slide_style = ' style="background-image:url(\'' . esc_url($thumb) . '\');"';
+                $slide_cls = ' hero__slide--bg' . $idx; // arka plan üstteki <style> bloğunda.
             } else {
-                $slide_cls   = ' hero__slide--ph hero__slide--ph-' . ((($idx - 1) % 3) + 1);
-                $slide_style = '';
+                $slide_cls = ' hero__slide--ph hero__slide--ph-' . ((($idx - 1) % 3) + 1);
             }
+            // SEO: sayfa başına tek H1 — ilk slayt h1, diğerleri h2 (görsel olarak aynı, CSS .hero__title üzerinden).
+            $htag = $idx === 1 ? 'h1' : 'h2';
         ?>
-        <div class="hero__slide<?php echo $active . $slide_cls; ?>"<?php echo $slide_style; ?>>
+        <div class="hero__slide<?php echo $active . $slide_cls; ?>">
             <div class="hero__overlay"></div>
             <div class="container hero__content">
                 <?php if ($eyebrow) : ?>
                     <span class="hero__eyebrow"><?php echo esc_html($eyebrow); ?></span>
                 <?php endif; ?>
-                <h1 class="hero__title">
+                <<?php echo $htag; ?> class="hero__title">
                     <?php echo esc_html(get_the_title()); ?>
                     <?php if ($accent) : ?>
                         <span><?php echo esc_html($accent); ?></span>
                     <?php endif; ?>
-                </h1>
+                </<?php echo $htag; ?>>
                 <?php if (has_excerpt()) : ?>
                     <p class="hero__sub"><?php echo esc_html(get_the_excerpt()); ?></p>
                 <?php endif; ?>
@@ -159,11 +177,17 @@ if ($slides_q->have_posts()) :
                 ['img' => 'Resim-6.jpg', 'title' => __('Mobil Uygulamalar', 'kaplan'),                   'link' => '/is-zekasi-yazilimlari/'],
                 ['img' => 'Resim-9.jpg', 'title' => __('Bireysel Eğitimler', 'kaplan'),                  'link' => '/egitimler/'],
             ];
-            foreach ($portfolio as $tile) :
-                $bg   = $img . '/hero/' . $tile['img'];
+            // SEO: tüm arka planları tek <style> bloğunda topla (style= attribute kullanma).
+            echo '<style>';
+            foreach ($portfolio as $pidx => $tile) {
+                $bg = $img . '/hero/' . $tile['img'];
+                echo ".portfolio-tile--n{$pidx}{background-image:url('" . esc_url($bg) . "');}";
+            }
+            echo "</style>\n";
+            foreach ($portfolio as $pidx => $tile) :
                 $href = function_exists('kpl_localized_url') ? kpl_localized_url($tile['link']) : home_url($tile['link']);
                 ?>
-                <a class="portfolio-tile" href="<?php echo esc_url($href); ?>" style="background-image:url('<?php echo esc_url($bg); ?>');">
+                <a class="portfolio-tile portfolio-tile--n<?php echo (int) $pidx; ?>" href="<?php echo esc_url($href); ?>">
                     <div class="portfolio-tile__body">
                         <h3><?php echo wp_kses_post($tile['title']); ?></h3>
                         <span class="portfolio-tile__line"></span>

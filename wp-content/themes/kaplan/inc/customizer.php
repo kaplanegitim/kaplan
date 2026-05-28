@@ -19,6 +19,7 @@ function kaplan_contact_defaults(): array {
     return [
         'kaplan_phone'             => '+90 530 967 23 66',
         'kaplan_email'             => 'bilgi@kaplanegitim.com',
+        'kaplan_address'           => '',
         'kaplan_social_linkedin'   => 'https://www.linkedin.com/company/kaplan-e%C4%9Fitim-ve-dan%C4%B1%C5%9Fmanl%C4%B1k/',
         'kaplan_social_youtube'    => 'https://www.youtube.com/@kaplanegitimvedansmanlk9990',
         'kaplan_social_instagram'  => '',
@@ -74,6 +75,18 @@ add_action('customize_register', function ($wp_customize) {
         'label'   => __('E-posta', 'kaplan'),
         'section' => 'kaplan_contact',
         'type'    => 'email',
+    ]);
+
+    $wp_customize->add_setting('kaplan_address', [
+        'default'           => $defaults['kaplan_address'],
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ]);
+    $wp_customize->add_control('kaplan_address', [
+        'label'       => __('Adres', 'kaplan'),
+        'description' => __('Tek satır posta adresi (örn. "Maslak, Sarıyer/İstanbul"). Dolu ise schema\'ya LocalBusiness olarak yansır — yerel arama kartı için gerekli.', 'kaplan'),
+        'section'     => 'kaplan_contact',
+        'type'        => 'text',
     ]);
 
     // --- Sosyal medya (boş bırakılan ikon gizlenir) ---
