@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('KAPLAN_VERSION', '0.4.1');
+define('KAPLAN_VERSION', '0.4.2');
 define('KAPLAN_DIR', get_template_directory());
 define('KAPLAN_URI', get_template_directory_uri());
 

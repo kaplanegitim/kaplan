@@ -218,7 +218,14 @@
   width: fit-content;
   backdrop-filter: blur(4px);
 }
-.hero__title { color: #fff; margin-bottom: .6rem; }
+/* Element tipinden bağımsız (h1 ilk slaytta, h2 sonrakilerde — SEO tek-H1) — aynı görünüm. */
+.hero__title {
+  color: #fff;
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 .6rem;
+}
 .hero__title span { color: var(--c-primary); }
 .hero__sub {
   color: rgba(255,255,255,.9);
