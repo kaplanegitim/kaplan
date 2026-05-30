@@ -84,10 +84,10 @@ if ($slides_q->have_posts()) :
                 <?php if ($cta1_label || $cta2_label) : ?>
                     <div class="hero__actions">
                         <?php if ($cta1_label) : ?>
-                            <a class="btn btn--primary" href="<?php echo esc_url($cta1_url ? home_url($cta1_url) : '#'); ?>"><?php echo esc_html($cta1_label); ?></a>
+                            <a class="btn btn--primary" href="<?php echo esc_url(kpl_slide_cta_href($cta1_url)); ?>"<?php echo kpl_slide_cta_external($cta1_url) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html($cta1_label); ?></a>
                         <?php endif; ?>
                         <?php if ($cta2_label) : ?>
-                            <a class="btn btn--ghost" href="<?php echo esc_url($cta2_url ? home_url($cta2_url) : '#'); ?>"><?php echo esc_html($cta2_label); ?></a>
+                            <a class="btn btn--ghost" href="<?php echo esc_url(kpl_slide_cta_href($cta2_url)); ?>"<?php echo kpl_slide_cta_external($cta2_url) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html($cta2_label); ?></a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

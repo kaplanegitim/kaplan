@@ -19,6 +19,29 @@
 
 if (!defined('ABSPATH')) exit;
 
+/**
+ * Slide CTA URL çözer.
+ *
+ * Mutlak URL (http://, https://, //) → olduğu gibi (örn. bireysel.kaplanegitim.com
+ * ürün sayfası, farklı subdomain). Aksi halde site-içi yol → kpl_localized_url/home_url.
+ * Boşsa '#'.
+ */
+function kpl_slide_cta_href($url) {
+    $url = trim((string) $url);
+    if ($url === '') return '#';
+    if (preg_match('#^(https?:)?//#i', $url)) return $url;
+    return function_exists('kpl_localized_url') ? kpl_localized_url($url) : home_url($url);
+}
+
+/** CTA URL site dışına mı gidiyor (farklı host)? → yeni sekme için. */
+function kpl_slide_cta_external($url) {
+    $url = trim((string) $url);
+    if (!preg_match('#^(https?:)?//#i', $url)) return false;
+    $target = wp_parse_url($url, PHP_URL_HOST);
+    $self   = wp_parse_url(home_url(), PHP_URL_HOST);
+    return $target && strcasecmp($target, $self) !== 0;
+}
+
 add_action('init', function () {
     register_post_type('kpl_slide', [
         'labels' => [
@@ -76,6 +99,7 @@ function kpl_slide_meta_box_cb($post) {
         <div>
             <label><?php esc_html_e('CTA 1 URL', 'kaplan'); ?></label>
             <input type="text" name="kpl_cta1_url" value="<?php echo esc_attr($cta1_url); ?>" placeholder="/egitimler/" />
+            <p class="description"><?php esc_html_e('Site-içi yol (/egitimler/) ya da tam adres (https://bireysel.kaplanegitim.com/...). Farklı domain yeni sekmede açılır.', 'kaplan'); ?></p>
         </div>
         <div>
             <label><?php esc_html_e('CTA 2 metin (opsiyonel)', 'kaplan'); ?></label>

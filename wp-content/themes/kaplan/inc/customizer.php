@@ -28,6 +28,7 @@ function kaplan_contact_defaults(): array {
         'kaplan_stat_clients'      => '28',
         'kaplan_stat_sets'         => '6',
         'kaplan_stat_programs'     => '20',
+        'kaplan_stat_years'        => '13',
     ];
 }
 
@@ -118,6 +119,7 @@ add_action('customize_register', function ($wp_customize) {
         'kaplan_stat_clients'  => __('Müşteri sayısı', 'kaplan'),
         'kaplan_stat_sets'     => __('Gelişim Seti sayısı', 'kaplan'),
         'kaplan_stat_programs' => __('Eğitim Programı sayısı', 'kaplan'),
+        'kaplan_stat_years'    => __('Yıl (sektörel deneyim)', 'kaplan'),
     ] as $key => $label) {
         $wp_customize->add_setting($key, [
             'default'           => $defaults[$key],

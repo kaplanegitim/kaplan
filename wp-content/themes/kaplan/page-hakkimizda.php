@@ -29,10 +29,10 @@ get_template_part('template-parts/page-hero');
                 <p><?php esc_html_e('Veri yönetimi, iş geliştirme, planlama, organizasyon, yönetim ve liderlik alanlarında sürekli öğrenmeyi ve öğretmeyi ilke edinmiş; süreçlerin verimliliğini arttırmaya yönelik otomasyonlar geliştiren; dinamik, inovatif ve yaratıcı bir ekibiz.', 'kaplan'); ?></p>
                 <p><?php esc_html_e('Tecrübemiz ve alanlarında yetkin ekip arkadaşlarımızla, «Büyük Resmi Görebilmek» için çıkacağınız yolda sizin ve şirketinizin danışmanlığını yapmak, eğitim ve projelerimizle destek vermek için hizmetinizdeyiz.', 'kaplan'); ?></p>
                 <ul class="check-list">
-                    <li><i class="fa-solid fa-check"></i> <?php esc_html_e('13+ yıl sektörel deneyim', 'kaplan'); ?></li>
-                    <li><i class="fa-solid fa-check"></i> <?php esc_html_e('28+ kurumsal müşteri', 'kaplan'); ?></li>
-                    <li><i class="fa-solid fa-check"></i> <?php esc_html_e('42+ tamamlanmış proje', 'kaplan'); ?></li>
-                    <li><i class="fa-solid fa-check"></i> <?php esc_html_e('20+ aktif eğitim programı', 'kaplan'); ?></li>
+                    <li><i class="fa-solid fa-check"></i> <?php echo esc_html(sprintf(__('%s+ yıl sektörel deneyim', 'kaplan'), kaplan_opt('kaplan_stat_years'))); ?></li>
+                    <li><i class="fa-solid fa-check"></i> <?php echo esc_html(sprintf(__('%s+ kurumsal müşteri', 'kaplan'), kaplan_opt('kaplan_stat_clients'))); ?></li>
+                    <li><i class="fa-solid fa-check"></i> <?php echo esc_html(sprintf(__('%s+ tamamlanmış proje', 'kaplan'), kaplan_opt('kaplan_stat_projects'))); ?></li>
+                    <li><i class="fa-solid fa-check"></i> <?php echo esc_html(sprintf(__('%s+ aktif eğitim programı', 'kaplan'), kaplan_opt('kaplan_stat_programs'))); ?></li>
                 </ul>
                 <a href="<?php echo esc_url(kpl_localized_url('/iletisim/')); ?>" class="btn btn--primary">
                     <?php esc_html_e('Bizimle iletişime geçin', 'kaplan'); ?> <i class="fa-solid fa-arrow-right"></i>
