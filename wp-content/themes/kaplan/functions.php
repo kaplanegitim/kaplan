@@ -24,6 +24,7 @@ require_once KAPLAN_DIR . '/inc/form-handler.php';
 require_once KAPLAN_DIR . '/inc/polylang.php';
 require_once KAPLAN_DIR . '/inc/customizer.php';
 require_once KAPLAN_DIR . '/inc/seo.php';
+require_once KAPLAN_DIR . '/inc/page-egitimler-meta.php';
 
 /**
  * Theme support flags + i18n.

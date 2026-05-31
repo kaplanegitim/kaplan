@@ -140,9 +140,16 @@ $paket_q = $kpl_run_query([
             <!-- BİREYSEL -->
             <div class="tab-panel" data-panel="bireysel">
                 <div class="about-intro__grid">
+                    <?php $kpl_bir_img = (int) get_post_meta(get_queried_object_id(), '_kpl_bireysel_image', true); ?>
+                    <?php if ($kpl_bir_img) : ?>
+                    <div class="about-intro__media">
+                        <?php echo wp_get_attachment_image($kpl_bir_img, 'large', false, ['loading' => 'lazy', 'alt' => '']); ?>
+                    </div>
+                    <?php else : ?>
                     <div class="about-intro__media about-intro__media--ph about-intro__media--ph-2">
                         <i class="fa-solid fa-user-graduate" aria-hidden="true"></i>
                     </div>
+                    <?php endif; ?>
                     <div class="about-intro__text">
                         <span class="section-head__eyebrow"><?php esc_html_e('Bireysel Eğitimler', 'kaplan'); ?></span>
                         <h2><span class="accent"><?php esc_html_e('Yeni Mezun', 'kaplan'); ?></span> <?php esc_html_e('Yaşam Kiti', 'kaplan'); ?></h2>
