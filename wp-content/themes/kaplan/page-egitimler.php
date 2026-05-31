@@ -140,7 +140,7 @@ $paket_q = $kpl_run_query([
             <!-- BİREYSEL -->
             <div class="tab-panel" data-panel="bireysel">
                 <div class="about-intro__grid">
-                    <?php $kpl_bir_img = (int) get_post_meta(get_queried_object_id(), '_kpl_bireysel_image', true); ?>
+                    <?php $kpl_bir_img = function_exists('kpl_bireysel_image_id') ? kpl_bireysel_image_id() : 0; ?>
                     <?php if ($kpl_bir_img) : ?>
                     <div class="about-intro__media">
                         <?php echo wp_get_attachment_image($kpl_bir_img, 'large', false, ['loading' => 'lazy', 'alt' => '']); ?>
