@@ -151,14 +151,25 @@ $paket_q = $kpl_run_query([
                     </div>
                     <?php endif; ?>
                     <div class="about-intro__text">
-                        <span class="section-head__eyebrow"><?php esc_html_e('Bireysel Eğitimler', 'kaplan'); ?></span>
-                        <h2><span class="accent"><?php esc_html_e('Yeni Mezun', 'kaplan'); ?></span> <?php esc_html_e('Yaşam Kiti', 'kaplan'); ?></h2>
-                        <p><?php esc_html_e('Kariyere güçlü başlangıç için pratik araçlar, çalışma defterleri ve videolar. Bireysel olarak katılabileceğiniz açık eğitimler ve kendi hızınızda ilerleyebileceğiniz online içerikler.', 'kaplan'); ?></p>
+                        <?php
+                        $b_eyebrow = function_exists('kpl_bireysel_text') ? kpl_bireysel_text('eyebrow', __('Bireysel Eğitimler', 'kaplan')) : __('Bireysel Eğitimler', 'kaplan');
+                        $b_accent  = function_exists('kpl_bireysel_text') ? kpl_bireysel_text('title_accent', __('Yeni Mezun', 'kaplan')) : __('Yeni Mezun', 'kaplan');
+                        $b_title   = function_exists('kpl_bireysel_text') ? kpl_bireysel_text('title', __('Yaşam Kiti', 'kaplan')) : __('Yaşam Kiti', 'kaplan');
+                        $b_desc    = function_exists('kpl_bireysel_text') ? kpl_bireysel_text('desc', __('Kariyere güçlü başlangıç için pratik araçlar, çalışma defterleri ve videolar. Bireysel olarak katılabileceğiniz açık eğitimler ve kendi hızınızda ilerleyebileceğiniz online içerikler.', 'kaplan')) : __('Kariyere güçlü başlangıç için pratik araçlar, çalışma defterleri ve videolar. Bireysel olarak katılabileceğiniz açık eğitimler ve kendi hızınızda ilerleyebileceğiniz online içerikler.', 'kaplan');
+                        $b_list    = function_exists('kpl_bireysel_list') ? kpl_bireysel_list([
+                            __('Online video kütüphanesi', 'kaplan'),
+                            __('Çalışma defterleri ve şablonlar', 'kaplan'),
+                            __('Açık sınıf eğitimleri', 'kaplan'),
+                            __('Mentor desteği', 'kaplan'),
+                        ]) : [];
+                        ?>
+                        <span class="section-head__eyebrow"><?php echo esc_html($b_eyebrow); ?></span>
+                        <h2><?php if ($b_accent !== '') : ?><span class="accent"><?php echo esc_html($b_accent); ?></span> <?php endif; ?><?php echo esc_html($b_title); ?></h2>
+                        <p><?php echo esc_html($b_desc); ?></p>
                         <ul class="check-list">
-                            <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Online video kütüphanesi', 'kaplan'); ?></li>
-                            <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Çalışma defterleri ve şablonlar', 'kaplan'); ?></li>
-                            <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Açık sınıf eğitimleri', 'kaplan'); ?></li>
-                            <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Mentor desteği', 'kaplan'); ?></li>
+                            <?php foreach ($b_list as $b_item) : ?>
+                            <li><i class="fa-solid fa-check"></i> <?php echo esc_html($b_item); ?></li>
+                            <?php endforeach; ?>
                         </ul>
                         <form class="kpl-form">
                             <input type="hidden" name="form_type" value="bireysel" />
