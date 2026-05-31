@@ -198,7 +198,10 @@
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(15,27,45,.78) 0%, rgba(15,27,45,.45) 55%, rgba(18,155,216,.55) 100%);
+    /* Sol scrim: yazının okunurluğunu garanti eder, sağa doğru saydamlaşır (görsel görünür). */
+    linear-gradient(90deg, rgba(15,27,45,.90) 0%, rgba(15,27,45,.66) 38%, rgba(15,27,45,.18) 70%, rgba(15,27,45,0) 100%),
+    /* Marka tonu (lacivert → cyan). */
+    linear-gradient(135deg, rgba(15,27,45,.62) 0%, rgba(15,27,45,.36) 55%, rgba(18,155,216,.42) 100%);
 }
 .hero__content {
   position: relative;
@@ -226,13 +229,15 @@
   font-weight: 800;
   line-height: 1.1;
   margin: 0 0 .6rem;
+  text-shadow: 0 2px 18px rgba(0,0,0,.45);
 }
 .hero__title span { color: var(--c-primary); }
 .hero__sub {
-  color: rgba(255,255,255,.9);
+  color: rgba(255,255,255,.92);
   font-size: 1.1rem;
   max-width: 540px;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,.40);
 }
 .hero__actions { display: flex; gap: .8rem; flex-wrap: wrap; }
 .hero__dots {
