@@ -33,7 +33,38 @@ function kpl_form_schemas(): array {
             'required' => ['name', 'email', 'message'],
             'fields'   => ['name', 'email', 'subject', 'message'],
         ],
+        'bireysel' => [
+            'label'    => __('Bireysel Eğitim Bilgi Formu', 'kaplan'),
+            'required' => ['email', 'program'],
+            'fields'   => ['name', 'email', 'program', 'message'],
+        ],
     ];
+}
+
+/** Form türü → başarı sonrası yönlendirilecek URL (yoksa null). */
+function kpl_form_redirect_url(string $form_type): ?string {
+    if ($form_type === 'bireysel') {
+        return 'https://bireysel.kaplanegitim.com/';
+    }
+    return null;
+}
+
+/** Form alan anahtarı → Türkçe etiket (admin detay + mail). */
+function kpl_form_field_label(string $key): string {
+    $map = [
+        'first_name' => __('Ad', 'kaplan'),
+        'last_name'  => __('Soyad', 'kaplan'),
+        'name'       => __('Ad Soyad', 'kaplan'),
+        'email'      => __('E-posta', 'kaplan'),
+        'phone'      => __('Telefon', 'kaplan'),
+        'company'    => __('Şirket', 'kaplan'),
+        'position'   => __('Pozisyon', 'kaplan'),
+        'training'   => __('Eğitim', 'kaplan'),
+        'program'    => __('İlgilenilen Program', 'kaplan'),
+        'subject'    => __('Konu', 'kaplan'),
+        'message'    => __('Mesaj', 'kaplan'),
+    ];
+    return $map[$key] ?? ucfirst(str_replace(['_', '-'], ' ', $key));
 }
 
 function kpl_form_send_response(bool $ok, string $msg, array $extra = []) {
@@ -104,7 +135,7 @@ function kpl_form_handle_submission() {
     }
 
     update_post_meta($post_id, '_kpl_form_type', $form_type);
-    update_post_meta($post_id, '_kpl_data',      wp_json_encode($data));
+    update_post_meta($post_id, '_kpl_data',      wp_json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
     update_post_meta($post_id, '_kpl_ip',        kpl_form_client_ip());
     update_post_meta($post_id, '_kpl_user_agent', isset($_SERVER['HTTP_USER_AGENT']) ? substr(sanitize_text_field($_SERVER['HTTP_USER_AGENT']), 0, 500) : '');
 
@@ -112,10 +143,17 @@ function kpl_form_handle_submission() {
     kpl_form_send_admin_email($form_type, $schema['label'], $data, $post_id);
 
     // 7. Success
-    $success_msg = $form_type === 'training'
-        ? __('Talebiniz alındı, en kısa sürede dönüş yapacağız.', 'kaplan')
-        : __('Mesajınız alındı, en kısa sürede dönüş yapacağız.', 'kaplan');
-    kpl_form_send_response(true, $success_msg);
+    if ($form_type === 'training') {
+        $success_msg = __('Talebiniz alındı, en kısa sürede dönüş yapacağız.', 'kaplan');
+    } elseif ($form_type === 'bireysel') {
+        $success_msg = __('Bilgileriniz alındı, sizi bireysel eğitim sayfamıza yönlendiriyoruz…', 'kaplan');
+    } else {
+        $success_msg = __('Mesajınız alındı, en kısa sürede dönüş yapacağız.', 'kaplan');
+    }
+    $extra   = [];
+    $redirect = kpl_form_redirect_url($form_type);
+    if ($redirect) $extra['redirect'] = $redirect;
+    kpl_form_send_response(true, $success_msg, $extra);
 }
 
 add_action('wp_ajax_kpl_submit',        'kpl_form_handle_submission');
@@ -139,7 +177,7 @@ function kpl_form_send_admin_email(string $form_type, string $form_label, array 
     $lines = ["{$form_label} gönderimi alındı.", ''];
     foreach ($data as $k => $v) {
         if (in_array($k, ['nonce', 'action', '_kpl_website'], true)) continue;
-        $label = ucfirst(str_replace('_', ' ', $k));
+        $label = kpl_form_field_label($k);
         $lines[] = "{$label}: {$v}";
     }
     $lines[] = '';
@@ -161,8 +199,16 @@ function kpl_form_send_admin_email(string $form_type, string $form_label, array 
 
 // Frontend'e ajaxurl + nonce sağla
 add_action('wp_enqueue_scripts', function () {
+    $form_slugs = ['egitim-talep-formu', 'iletisim', 'egitimler'];
+    $load = is_front_page() || is_page($form_slugs);
+    // Polylang: EN çeviri sayfalarında TR slug'ına göre de yükle.
+    if (!$load && is_page() && function_exists('pll_get_post')) {
+        $tr_id = pll_get_post(get_queried_object_id(), 'tr');
+        $tr    = $tr_id ? get_post($tr_id) : null;
+        if ($tr && in_array($tr->post_name, $form_slugs, true)) $load = true;
+    }
     // Sadece formlu sayfalarda yükle
-    if (!(is_page(['egitim-talep-formu', 'iletisim']) || is_front_page())) return;
+    if (!$load) return;
 
     wp_register_script('kpl-forms', KAPLAN_URI . '/assets/js/forms.js', [], KAPLAN_VERSION, ['in_footer' => true, 'strategy' => 'defer']);
     wp_localize_script('kpl-forms', 'KPL_FORMS', [

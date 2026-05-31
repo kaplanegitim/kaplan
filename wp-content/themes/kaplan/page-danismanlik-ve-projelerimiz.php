@@ -63,7 +63,7 @@ get_template_part('template-parts/page-hero');
                 </div>
                 <h3><?php esc_html_e('Süreç Otomasyonu', 'kaplan'); ?></h3>
                 <ul>
-                    <li><?php esc_html_e('Robotik Süreç (RPA)', 'kaplan'); ?></li>
+                    <li><?php esc_html_e('Yapay Zeka Süreç Otomasyonu', 'kaplan'); ?></li>
                     <li><?php esc_html_e('E-posta otomasyonu', 'kaplan'); ?></li>
                     <li><?php esc_html_e('Veri akışı entegrasyonu', 'kaplan'); ?></li>
                 </ul>

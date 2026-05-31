@@ -57,7 +57,8 @@ function kpl_submission_detail_cb($post) {
     $parsed = $data ? json_decode($data, true) : [];
     if (!is_array($parsed)) $parsed = [];
 
-    $type_label = $type === 'training' ? __('Eğitim Talep Formu', 'kaplan') : __('İletişim Formu', 'kaplan');
+    $schemas    = function_exists('kpl_form_schemas') ? kpl_form_schemas() : [];
+    $type_label = $schemas[$type]['label'] ?? __('İletişim Formu', 'kaplan');
     ?>
     <table class="widefat" style="border:0;background:transparent;">
         <tr>
@@ -70,7 +71,7 @@ function kpl_submission_detail_cb($post) {
         </tr>
         <?php foreach ($parsed as $key => $value) :
             if (in_array($key, ['nonce', 'action', '_kpl_website'], true)) continue;
-            $label = ucfirst(str_replace(['_','-'], ' ', $key));
+            $label = function_exists('kpl_form_field_label') ? kpl_form_field_label($key) : ucfirst(str_replace(['_','-'], ' ', $key));
         ?>
         <tr>
             <th style="text-align:left;vertical-align:top;padding:.6em 0;border-bottom:1px solid #eee;"><?php echo esc_html($label); ?></th>
@@ -102,9 +103,14 @@ add_filter('manage_kpl_submission_posts_columns', function ($cols) {
 add_action('manage_kpl_submission_posts_custom_column', function ($col, $post_id) {
     if ($col === 'kpl_form_type') {
         $t = get_post_meta($post_id, '_kpl_form_type', true);
-        $color = $t === 'training' ? '#129BD8' : '#6B7A90';
-        echo '<span style="background:' . $color . ';color:#fff;font-size:.75em;padding:.2em .7em;border-radius:999px;font-weight:600;">';
-        echo esc_html($t === 'training' ? 'Eğitim Talep' : 'İletişim');
+        $badges = [
+            'training' => ['#129BD8', __('Eğitim Talep', 'kaplan')],
+            'bireysel' => ['#5AC8FB', __('Bireysel', 'kaplan')],
+            'contact'  => ['#6B7A90', __('İletişim', 'kaplan')],
+        ];
+        [$color, $text] = $badges[$t] ?? ['#6B7A90', __('İletişim', 'kaplan')];
+        echo '<span style="background:' . esc_attr($color) . ';color:#fff;font-size:.75em;padding:.2em .7em;border-radius:999px;font-weight:600;">';
+        echo esc_html($text);
         echo '</span>';
     }
     if ($col === 'kpl_summary') {

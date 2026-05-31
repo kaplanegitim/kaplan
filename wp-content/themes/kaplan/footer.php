@@ -12,7 +12,7 @@
         <!-- Brand column -->
         <div class="footer__col">
             <img class="footer__logo" src="<?php echo esc_url(KAPLAN_URI . '/assets/img/logo_k.png'); ?>" alt="<?php bloginfo('name'); ?>" />
-            <p><?php esc_html_e('İZLENEBİLİR ve YÖNETİLEBİLİR bir şirkete dönüşme yolculuğunuzda eğitim, danışmanlık ve iş çözümleri ile destek veriyoruz.', 'kaplan'); ?></p>
+            <p><?php esc_html_e('İZLENEBİLİR ve YÖNETİLEBİLİR bir şirkete dönüşme yolculuğunuzda eğitim, danışmanlık ve iş zekası çözümleri ile destek veriyoruz.', 'kaplan'); ?></p>
             <?php set_query_var('social_class', 'footer__social'); get_template_part('template-parts/social-links'); ?>
         </div>
 

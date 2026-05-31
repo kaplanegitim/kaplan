@@ -39,6 +39,10 @@
         if (json.ok) {
           showStatus(status, 'success', json.message);
           form.reset();
+          if (json.redirect) {
+            // Başarı mesajı kısa süre görünsün, sonra yönlendir.
+            setTimeout(function () { window.location.href = json.redirect; }, 1200);
+          }
         } else {
           showStatus(status, 'error', json.message || KPL_FORMS.i18n.error);
         }

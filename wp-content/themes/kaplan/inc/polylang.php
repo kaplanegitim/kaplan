@@ -25,6 +25,17 @@ add_filter('pll_get_post_types', function ($post_types, $hide = false) {
 }, 10, 2);
 
 /**
+ * Polylang'a bildir: kpl_training_cat (eğitim kategorisi) çevrilebilir olsun.
+ * Böylece her kategori term'inin bir dili olur; TR eğitim Türkçe kategoriyi,
+ * EN eğitim İngilizce kategoriyi gösterir. Admin "Kategoriler" kutusu da
+ * düzenlenen eğitimin diline göre filtrelenir.
+ */
+add_filter('pll_get_taxonomies', function ($taxonomies, $hide = false) {
+    $taxonomies['kpl_training_cat'] = 'kpl_training_cat';
+    return $taxonomies;
+}, 10, 2);
+
+/**
  * NOT: Topbar/footer çevrilebilir metinleri (marka açıklaması, bülten,
  * adres, çalışma saatleri, copyright vb.) doğrudan template'lerde
  * esc_html_e(..., 'kaplan') ile yazılır ve languages/en_US.l10n.php
@@ -130,7 +141,7 @@ function kpl_lang_switcher_items(): string {
     // Dil slug → bayrak dosyası eşlemesi (sadece bayrak gösterilir).
     $flags = [
         'tr' => 'tr.svg',
-        'en' => 'us.svg',
+        'en' => 'gb.svg',
     ];
 
     $out = '';

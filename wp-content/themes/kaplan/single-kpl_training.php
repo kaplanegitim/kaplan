@@ -9,7 +9,7 @@ get_header();
 
 while (have_posts()) : the_post();
     $id       = get_the_ID();
-    $chip     = get_post_meta($id, '_kpl_chip', true);
+    $chip     = function_exists('kpl_training_chip') ? kpl_training_chip($id) : get_post_meta($id, '_kpl_chip', true);
     $icon     = get_post_meta($id, '_kpl_icon', true) ?: 'fa-graduation-cap';
     $duration = get_post_meta($id, '_kpl_duration', true);
     $is_pkg   = get_post_meta($id, '_kpl_package', true) === '1';
@@ -65,7 +65,7 @@ while (have_posts()) : the_post();
             </header>
             <div class="training-grid">
                 <?php while ($related->have_posts()) : $related->the_post();
-                    $r_chip = get_post_meta(get_the_ID(), '_kpl_chip', true);
+                    $r_chip = function_exists('kpl_training_chip') ? kpl_training_chip(get_the_ID()) : get_post_meta(get_the_ID(), '_kpl_chip', true);
                     $r_icon = get_post_meta(get_the_ID(), '_kpl_icon', true) ?: 'fa-graduation-cap';
                     $r_dur  = get_post_meta(get_the_ID(), '_kpl_duration', true);
                 ?>

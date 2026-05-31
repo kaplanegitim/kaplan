@@ -5,8 +5,8 @@
  * Anasayfa hero slider'ı bu CPT'den beslenir.
  *
  * Slide alanları:
- *   post_title       : ana başlık (örn: "Robotik Süreç Otomasyonu")
- *   _kpl_title_accent: vurgu metni (cyan renkte yazılır — örn: "(RPA)")
+ *   post_title       : ana başlık (örn: "Yapay Zeka Süreç Otomasyonu")
+ *   _kpl_title_accent: vurgu metni (cyan renkte yazılır — örn: "(Yapay Zeka)")
  *   post_excerpt     : alt başlık paragrafı
  *   _kpl_eyebrow     : üst etiket (örn: "Yeni eklendi")
  *   _kpl_cta1_label / _kpl_cta1_url
@@ -89,7 +89,7 @@ function kpl_slide_meta_box_cb($post) {
         </div>
         <div class="full">
             <label><?php esc_html_e('Başlık vurgu metni (cyan span)', 'kaplan'); ?></label>
-            <input type="text" name="kpl_title_accent" value="<?php echo esc_attr($accent); ?>" placeholder="<?php esc_attr_e('(RPA), Yaşam Kiti, Yönetim...', 'kaplan'); ?>" />
+            <input type="text" name="kpl_title_accent" value="<?php echo esc_attr($accent); ?>" placeholder="<?php esc_attr_e('(Yapay Zeka), Yaşam Kiti, Yönetim...', 'kaplan'); ?>" />
             <p class="description"><?php esc_html_e('Ana başlığa eklenen, cyan renkte vurgulanan kelime/öbek.', 'kaplan'); ?></p>
         </div>
         <div>

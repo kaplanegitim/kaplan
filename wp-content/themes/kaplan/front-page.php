@@ -137,7 +137,7 @@ if ($slides_q->have_posts()) :
                     <img src="<?php echo esc_url($icon_base . '/ikonlar-site-için-05-125x125.png'); ?>" alt="" />
                 </div>
                 <h4><?php esc_html_e('Sayılarla Şirket Yönetimi', 'kaplan'); ?></h4>
-                <p><?php esc_html_e('Bütçeleme, talep/tüketim planlama, veri analizi ve karar destek sistemleri ile izlenebilir, yönetilebilir şirketlere dönüşüm.', 'kaplan'); ?></p>
+                <p><?php esc_html_e('Bütçeleme, talep-üretim planlama, veri analizi ve karar destek sistemleri ile izlenebilir, yönetilebilir şirketlere dönüşüm.', 'kaplan'); ?></p>
             </article>
         </div>
     </div>
@@ -210,11 +210,11 @@ if ($slides_q->have_posts()) :
         <div class="split__text">
             <span class="section-head__eyebrow"><?php esc_html_e('Hakkımızda', 'kaplan'); ?></span>
             <h2><?php esc_html_e('Büyük resmi', 'kaplan'); ?> <span class="accent"><?php esc_html_e('görmenizi', 'kaplan'); ?></span> <?php esc_html_e('sağlıyoruz.', 'kaplan'); ?></h2>
-            <p><strong><?php esc_html_e('Kaplan Eğitim ve Danışmanlık', 'kaplan'); ?></strong> <?php esc_html_e('olarak; İZLENEBİLİR ve YÖNETİLEBİLİR bir şirkete dönüşme yolculuğunuzda eğitim, danışmanlık ve iş çözümleri ile destek veriyoruz.', 'kaplan'); ?></p>
+            <p><strong><?php esc_html_e('Kaplan Eğitim ve Danışmanlık', 'kaplan'); ?></strong> <?php esc_html_e('olarak; İZLENEBİLİR ve YÖNETİLEBİLİR bir şirkete dönüşme yolculuğunuzda eğitim, danışmanlık ve iş zekası çözümleri ile destek veriyoruz.', 'kaplan'); ?></p>
             <ul class="check-list">
                 <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Veri odaklı karar süreçleri', 'kaplan'); ?></li>
                 <li><i class="fa-solid fa-check"></i> <?php esc_html_e('1 sayfa konseptiyle yalın anlatım', 'kaplan'); ?></li>
-                <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Otomasyon &amp; RPA çözümleri', 'kaplan'); ?></li>
+                <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Otomasyon &amp; Yapay Zeka çözümleri', 'kaplan'); ?></li>
                 <li><i class="fa-solid fa-check"></i> <?php esc_html_e('Yöneticiye özel gelişim programları', 'kaplan'); ?></li>
             </ul>
             <a href="<?php echo esc_url(kpl_localized_url('/danismanlik-ve-projelerimiz/')); ?>" class="btn btn--primary"><?php esc_html_e('Hizmetlerimizi inceleyin', 'kaplan'); ?></a>
@@ -296,7 +296,7 @@ if ($slides_q->have_posts()) :
                 <ul>
                     <li><?php esc_html_e('İş Zekası', 'kaplan'); ?></li>
                     <li><?php esc_html_e('Otomasyon', 'kaplan'); ?></li>
-                    <li><?php esc_html_e('Robotik Süreç (RPA)', 'kaplan'); ?></li>
+                    <li><?php esc_html_e('Yapay Zeka Süreç Otomasyonu', 'kaplan'); ?></li>
                 </ul>
                 <a href="<?php echo esc_url(kpl_localized_url('/is-zekasi-yazilimlari/')); ?>" class="link-arrow"><?php esc_html_e('Detay', 'kaplan'); ?> <i class="fa-solid fa-arrow-right"></i></a>
             </article>

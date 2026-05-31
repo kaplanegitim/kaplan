@@ -136,7 +136,7 @@ get_header();
                     <img src="<?php echo esc_url($icon_base . '/workspace-icons-30-150x150.png'); ?>" alt="" />
                 </div>
                 <h3>Proje Çözümleri</h3>
-                <ul><li>İş Zekası</li><li>Otomasyon</li><li>Robotik Süreç (RPA)</li></ul>
+                <ul><li>İş Zekası</li><li>Otomasyon</li><li>Yapay Zeka Süreç Otomasyonu</li></ul>
                 <a href="#" class="link-arrow"><?php esc_html_e('Detay', 'kaplan'); ?> <i class="fa-solid fa-arrow-right"></i></a>
             </article>
         </div>

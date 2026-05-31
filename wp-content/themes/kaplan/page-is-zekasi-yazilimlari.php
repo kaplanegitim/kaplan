@@ -55,7 +55,7 @@ get_template_part('template-parts/page-hero');
             </div>
             <div class="feature-list__item">
                 <div class="feature-list__icon"><i class="fa-solid fa-robot"></i></div>
-                <div><h4><?php esc_html_e('RPA Araçları', 'kaplan'); ?></h4><p><?php esc_html_e('UiPath, Power Automate ile tekrarlanan işlerin otomatize edilmesi.', 'kaplan'); ?></p></div>
+                <div><h4><?php esc_html_e('Yapay Zeka Araçları', 'kaplan'); ?></h4><p><?php esc_html_e('UiPath, Power Automate ile tekrarlanan işlerin otomatize edilmesi.', 'kaplan'); ?></p></div>
             </div>
             <div class="feature-list__item">
                 <div class="feature-list__icon"><i class="fa-solid fa-globe"></i></div>
