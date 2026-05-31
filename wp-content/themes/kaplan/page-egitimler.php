@@ -59,7 +59,7 @@ $paket_q = $kpl_run_query([
             <div class="tabs" role="tablist">
                 <button class="is-active" data-tab="paket"><?php esc_html_e('Paket Programlar', 'kaplan'); ?></button>
                 <button data-tab="tekil"><?php esc_html_e('Tekil Eğitimler', 'kaplan'); ?></button>
-                <button data-tab="bireysel" id="bireysel"><?php esc_html_e('Bireysel', 'kaplan'); ?></button>
+                <button data-tab="bireysel"><?php esc_html_e('Bireysel', 'kaplan'); ?></button>
             </div>
 
             <!-- TEKİL -->

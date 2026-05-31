@@ -905,6 +905,9 @@
 }
 
 /* ===== TABS ===== */
+/* Derin link (#bireysel) ile kaydırınca sticky header'ın altında kalmasın. */
+[data-tabs] { scroll-margin-top: 96px; }
+
 .tabs {
   display: flex;
   justify-content: center;
