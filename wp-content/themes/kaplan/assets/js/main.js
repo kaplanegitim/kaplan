@@ -80,31 +80,13 @@
   document.querySelectorAll('[data-tabs]').forEach(group => {
     const buttons = group.querySelectorAll('.tabs button');
     const panels = group.querySelectorAll('.tab-panel');
-    const activate = (target) => {
-      let found = false;
-      buttons.forEach(b => {
-        const on = b.dataset.tab === target;
-        b.classList.toggle('is-active', on);
-        if (on) found = true;
-      });
-      if (!found) return false;
-      panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
-      return true;
-    };
     buttons.forEach(btn => {
-      btn.addEventListener('click', () => activate(btn.dataset.tab));
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+        panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+      });
     });
-    // Derin link: /egitimler/#bireysel → ilgili tab açılır + bölüme kaydırılır.
-    // Tab'ı hemen seç; kaydırmayı layout (hero görselleri) otursun + tarayıcının
-    // kendi anchor zıplaması bitsin diye bir tık geciktir.
-    const fromHash = () => {
-      const h = (window.location.hash || '').replace(/^#/, '');
-      if (h && activate(h)) {
-        setTimeout(() => group.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
-      }
-    };
-    fromHash();
-    window.addEventListener('hashchange', fromHash);
   });
 
   /* ---------- Counters ---------- */
