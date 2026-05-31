@@ -80,13 +80,28 @@
   document.querySelectorAll('[data-tabs]').forEach(group => {
     const buttons = group.querySelectorAll('.tabs button');
     const panels = group.querySelectorAll('.tab-panel');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
-        buttons.forEach(b => b.classList.toggle('is-active', b === btn));
-        panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+    const activate = (target, scroll) => {
+      let found = false;
+      buttons.forEach(b => {
+        const on = b.dataset.tab === target;
+        b.classList.toggle('is-active', on);
+        if (on) found = true;
       });
+      if (!found) return false;
+      panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+      if (scroll) group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return true;
+    };
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => activate(btn.dataset.tab, false));
     });
+    // Derin link: /egitimler/#bireysel → ilgili tab açılır + bölüme kaydırılır.
+    const fromHash = () => {
+      const h = (window.location.hash || '').replace(/^#/, '');
+      if (h) activate(h, true);
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
   });
 
   /* ---------- Counters ---------- */
