@@ -20,6 +20,7 @@ add_filter('pll_get_post_types', function ($post_types, $hide = false) {
     $post_types['kpl_case']       = 'kpl_case';
     $post_types['kpl_team']       = 'kpl_team';
     $post_types['kpl_slide']      = 'kpl_slide';
+    $post_types['kpl_showcase']   = 'kpl_showcase';
     // kpl_submission ÇEVRİLMEZ — form gönderimleri tek dilde kalsın.
     return $post_types;
 }, 10, 2);

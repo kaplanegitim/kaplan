@@ -20,6 +20,7 @@ require_once KAPLAN_DIR . '/inc/cpt-team.php';
 require_once KAPLAN_DIR . '/inc/cpt-slide.php';
 require_once KAPLAN_DIR . '/inc/cpt-submission.php';
 require_once KAPLAN_DIR . '/inc/cpt-client.php';
+require_once KAPLAN_DIR . '/inc/cpt-showcase.php';
 require_once KAPLAN_DIR . '/inc/form-handler.php';
 require_once KAPLAN_DIR . '/inc/polylang.php';
 require_once KAPLAN_DIR . '/inc/customizer.php';

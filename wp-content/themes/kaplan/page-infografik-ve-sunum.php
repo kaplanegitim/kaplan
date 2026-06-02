@@ -16,26 +16,38 @@ set_query_var('hero_bg',    'hero/Resim-7.jpg');
 get_template_part('template-parts/page-hero');
 
 $ig = $img . '/infographics';
-// 'img' dolu = gerçek görsel; '' = henüz eklenmemiş, placeholder.
-// Masonry layout: portre + yatay görseller doğal oranıyla, kırpılmadan akar.
-$infografik = [
-    ['img' => 'kervan-gida-infografik.jpg', 'label' => __('Kervan Gıda · İnfografik', 'kaplan')],
-    ['img' => 'vodafone-infografik.jpg',    'label' => __('Vodafone · İnfografik', 'kaplan')],
-    ['img' => 'ekol-infografik.jpg',        'label' => __('Ekol Lojistik · İnfografik', 'kaplan')],
-    ['img' => 'aras-kargo-infografik.png',  'label' => __('Aras Kargo · İnfografik', 'kaplan')],
-];
-$sunum = [
-    ['img' => 'ik-butce-sunumu.png',    'label' => __('Aras Kargo · İK Bütçe Yönetici Sunumu', 'kaplan')],
-    ['img' => 'kervan-sunum.jpg',       'label' => __('Kervan · Halka Arz Sunumu', 'kaplan')],
-    ['img' => 'teb-sunum.png',          'label' => __('TEB · Sunum', 'kaplan')],
-];
 
-// Uniform galeri tile (tüm kartlar eşit boyut; görsel cover ile yerleşir).
+// Öğeler artık admin'den yönetilir (kpl_showcase CPT). Görsel = Öne Çıkan Görsel,
+// etiket = başlık, sıra = Sayfa Nitelikleri → Sıra. Galeri tipinde hiç CPT öğesi
+// yoksa, sayfa boş kalmasın diye aşağıdaki tema-içi varsayılanlara düşülür.
+$infografik = function_exists('kpl_showcase_items') ? kpl_showcase_items('infografik') : [];
+if (!$infografik) {
+    $infografik = [
+        ['img' => 'kervan-gida-infografik.jpg', 'label' => __('Kervan Gıda · İnfografik', 'kaplan')],
+        ['img' => 'vodafone-infografik.jpg',    'label' => __('Vodafone · İnfografik', 'kaplan')],
+        ['img' => 'ekol-infografik.jpg',        'label' => __('Ekol Lojistik · İnfografik', 'kaplan')],
+        ['img' => 'aras-kargo-infografik.png',  'label' => __('Aras Kargo · İnfografik', 'kaplan')],
+    ];
+}
+$sunum = function_exists('kpl_showcase_items') ? kpl_showcase_items('sunum') : [];
+if (!$sunum) {
+    $sunum = [
+        ['img' => 'ik-butce-sunumu.png',    'label' => __('Aras Kargo · İK Bütçe Yönetici Sunumu', 'kaplan')],
+        ['img' => 'kervan-sunum.jpg',       'label' => __('Kervan · Halka Arz Sunumu', 'kaplan')],
+        ['img' => 'teb-sunum.png',          'label' => __('TEB · Sunum', 'kaplan')],
+    ];
+}
+
+// Uniform galeri tile. CPT öğesi → 'src'(arka plan) + 'href'(lightbox tam görsel);
+// tema-içi varsayılan → 'img' (dosya adı, $ig'e göreli). 'src'/'img' boşsa placeholder.
 $kpl_gallery_tile = function (array $g) use ($ig) {
-    if (!empty($g['img'])) {
-        $src = $ig . '/' . $g['img'];
+    $src  = !empty($g['src'])  ? $g['src']
+          : (!empty($g['img']) ? $ig . '/' . $g['img'] : '');
+    $href = !empty($g['href']) ? $g['href'] : $src;
+    if ($src !== '') {
         printf(
-            '<a href="%1$s" target="_blank" rel="noopener" class="gallery-item" style="background-image:url(\'%1$s\');"><span class="gallery-item__zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span><span class="gallery-item__label">%2$s</span></a>',
+            '<a href="%1$s" target="_blank" rel="noopener" class="gallery-item" style="background-image:url(\'%2$s\');"><span class="gallery-item__zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></span><span class="gallery-item__label">%3$s</span></a>',
+            esc_url($href),
             esc_url($src),
             esc_html($g['label'])
         );
